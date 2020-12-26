@@ -1,0 +1,1 @@
+# shopizer-shipping-module-canadapost-starter

@@ -28,7 +28,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Run shell script
+          name: Run tests
           command: |
             set -x
             /home/shopizer/tools/shopizer.sh tests
@@ -44,20 +44,17 @@ jobs:
           at: .
        # start proprietary DB using private Docker image
        # with credentials stored in the UI
-       - run: |
-           ls -al
-       - run: |
-           docker login -u shopizerecomm -p $DOCKERHUB_PASSWORD
-       - run: |
-           (cd sm-shop && docker build . -t shopizerecomm/shopizer:latest)
-       - run: |
-           docker push shopizerecomm/shopizer:latest
+      - run:
+          name: Run publish
+          command: |
+            set -x
+            /home/shopizer/tools/shopizer.sh publish
 
 # Orchestrate our job run sequence
 workflows:
   build_and_deploy:
     jobs:
       - build
-      #- publish:
-      #    requires:
-      #      - build
+      - publish:
+          requires:
+            - build

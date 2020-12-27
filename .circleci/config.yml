@@ -53,12 +53,6 @@ jobs:
        - run: |
            docker push shopizerecomm/shopizer:latest
 
-       #- run: |
-       #    docker login -u shopizerecomm  -p $DOCKERHUB_PASSWORD  | ls -al | echo "build docker" | cd sm-shop | ls -al | docker build . -t shopizerecomm/shopizer:latest
-       
-       # deploy the image
-       #- run: docker push shopizerecomm/shopizer:latest
-
 # Orchestrate our job run sequence
 workflows:
   build_and_deploy:

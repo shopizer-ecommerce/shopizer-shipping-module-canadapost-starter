@@ -17,6 +17,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<shopizer.version>2.16.0</shopizer.version>
+
+		<!-- jacoco coverage -->
+		<coverage.lines>.50</coverage.lines>
+		<coverage.branches>.50</coverage.branches>
 	</properties>
 
 

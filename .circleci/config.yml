@@ -32,29 +32,34 @@ jobs:
           command: |
             set -x
             /home/shopizer/tools/shopizer.sh tests
-      - persist_to_workspace:
-          root: .
-          paths:
-            - ./*
-
-  publish:
-    executor: shopizer-ci
-    steps:
-       - attach_workspace:
-          at: .
-       # start proprietary DB using private Docker image
-       # with credentials stored in the UI
       - run:
           name: Run publish
           command: |
             set -x
             /home/shopizer/tools/shopizer.sh publish
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./*
+
+  #publish:
+  #  executor: shopizer-ci
+  #  steps:
+  #     - attach_workspace:
+  #        at: .
+       # start proprietary DB using private Docker image
+       # with credentials stored in the UI
+  #    - run:
+  #        name: Run publish
+  #        command: |
+  #          set -x
+  #          /home/shopizer/tools/shopizer.sh publish
 
 # Orchestrate our job run sequence
 workflows:
   build_and_deploy:
     jobs:
       - build
-      - publish:
-          requires:
-            - build
+      #- publish:
+          #requires:
+            #- build

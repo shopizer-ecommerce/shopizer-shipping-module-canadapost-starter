@@ -71,7 +71,7 @@ public class Messages {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Messages.Message }
-     * 
+     * @return List
      * 
      */
     public List<Messages.Message> getMessage() {
